@@ -1,65 +1,60 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { Tabs } from '@/components/tabs';
+import styles from 'styles/Home.module.css';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+function Home({ initialTab }) {
+	return (
+		<div className={styles.container}>
+			<Head>
+				<title>React Tabs</title>
+				<link rel='icon' href='/favicon.ico' />
+			</Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+			<main>
+				<Tabs initialTab={initialTab}>
+					<div label='Tab 1'>
+						<h2>Title Tab 1</h2>
+						<p>
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+							Perspiciatis illum aperiam molestiae quidem consequatur quod fugit
+							delectus suscipit rem, eligendi necessitatibus labore voluptatem
+							exercitationem repellat, vitae eveniet in similique temporibus.
+						</p>
+					</div>
+					<div label='Tab 2'>
+						<h2>Title Tab 2</h2>
+						<p>
+							Sunt sint et odio rem vero laboriosam nobis modi dolor
+							consequatur, porro magnam, voluptates, incidunt minima ipsam
+							voluptatem! Rem recusandae reprehenderit, libero unde amet
+							voluptatem iusto architecto?
+						</p>
+					</div>
+					<div label='Tab 3'>
+						<h2>Title Tab 3</h2>
+						<p>
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error
+							incidunt vitae asperiores reprehenderit soluta esse quasi suscipit
+							eius veniam. Voluptatibus maiores magni nisi repudiandae quam!
+							Facere necessitatibus, nisi totam dolor recusandae aliquam
+							reprehenderit placeat vero et optio iusto provident fuga
+							cupiditate quo accusantium fugiat quis voluptas aperiam eos magni
+							enim reiciendis? Ea voluptatum magnam distinctio officiis
+							molestias consequuntur iusto hic quia inventore, non, modi
+							excepturi necessitatibus aspernatur, similique voluptatem
+							doloremque deleniti neque ad asperiores sed ut! Quibusdam
+							adipisci, perferendis nostrum est doloribus quas praesentium
+							facere dolores, dolorum illo ducimus sit eaque fugit tempore,
+							minima cum aperiam! Iste, fugiat? Temporibus, similique.
+						</p>
+					</div>
+				</Tabs>
+			</main>
+		</div>
+	);
 }
+
+Home.getInitialProps = ({ query }) => ({ initialTab: query.tab });
+
+export default Home;
